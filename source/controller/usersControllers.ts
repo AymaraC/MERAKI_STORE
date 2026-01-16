@@ -73,7 +73,7 @@ export class userController {
                     token: token  });
     }
 
-    static viewProfile(req: Request, res: Response) {
+    static viewProfile (req: Request, res: Response) {
         if (!req.user) {
         return res.status(401).json({ error: 'No estás autenticado.' });
         }

@@ -8,10 +8,12 @@ export interface Order {
     id: string,
     userId: string,
     tipoImagen: 'foto_personal' | 'foto_del_artista',
+    imagenUrl: string,
     tema: string,
     artista: string,
     estado: 'en_carrito' | 'confirmado' | 'cancelado',
-    fecha: string
+    fecha?: string,
+    precio: string                                          // Opcional, una fecha elegida por el usuario
 };
 
 export function readDataBase() : Order[] {
