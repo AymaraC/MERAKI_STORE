@@ -3,6 +3,7 @@ import fs from 'fs';
 
 const filePath = path.join(__dirname, '../database/orders.json');
 
+// Utilizamos la interfaz para validar en tiempos de ejecución
 export interface Order {
     id: string,
     userId: string,

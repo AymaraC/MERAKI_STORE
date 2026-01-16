@@ -7,16 +7,17 @@ export interface User {
   id: string;
   email: string;
   password: string;
+  role: "user" | "admin";
 }
 
 export function readUsers() : User[] {                               // Función para leer los usuarios en la base de datos
     const data = fs.readFileSync(filePath, 'utf-8');
     return JSON.parse(data);
-}
+};
 
 export function saveUsers(users: User[]) : void {
     fs.writeFileSync(filePath, JSON.stringify(users, null, 2)); 
-}
+};
 
 
 
