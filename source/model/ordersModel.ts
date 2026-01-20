@@ -12,8 +12,8 @@ export interface Order {
     tema: string,
     artista: string,
     estado: 'en_carrito' | 'confirmado' | 'cancelado',
-    fecha?: string,
-    precio: string                                          // Opcional, una fecha elegida por el usuario
+    fecha?: string,                                 // Opcional, una fecha elegida por el usuario
+    precio: number                                          
 };
 
 export function readDataBase() : Order[] {
