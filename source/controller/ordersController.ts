@@ -24,12 +24,13 @@ export class ordersController {
 
         } catch(error) {
             console.error("Error en getOrder:", error);
-            next(error)
+            next(error);
         }
     } 
 
     // Función para que el usuario logueado pueda ver su orden
-    static getOrderUser(req: Request, res: Response) {
+    static getOrderUser(req: Request, res: Response, next: NextFunction) {
+        try {
         const id = req.user!.id;            // Utilizamos el ! para que TS confíe que el usuario ya existe el usuario
         const orders = readDataBase();
         const findOrders = orders.find(order => order.userId === id);
@@ -38,10 +39,15 @@ export class ordersController {
         if(findOrders.estado !== 'en_carrito') return res.status(403).json({error: 'No se pueden mostrar ordenes que no estén en el carrito.'})
         
         res.json({findOrders});             // Devolvemos las ordenes
-    }
+    } catch(error) {
+        console.error("Error en getOrderUser:", error);
+        next(error);
+    }    // cierro try/catch
 
+}  // Cierro getOrderUser
 
     static addOrders(req: Request, res:Response) {          // No agrego autenticación de usuario porque de eso se encarga el middleware, si llega hasta el controller esta autenticado
+        
         try {
         const parsed = addOrderSchema.safeParse(req.body);
 
@@ -82,7 +88,7 @@ export class ordersController {
     
     } // cierra addOrders
 
-    static editOrder(req: Request, res: Response) {
+    static editOrder(req: Request, res: Response, next: NextFunction) {
         try {
         const orderId = req.params.id;
         const orders = readDataBase();
@@ -125,7 +131,7 @@ export class ordersController {
 
     }  catch(error) {
         console.error("Error en editOrder:", error);
-        res.status(500).json({ error: "Error al actualizar la orden" });
+        next(error)
     }
     
 }       // Cierre edit order
@@ -152,11 +158,10 @@ export class ordersController {
 
     } catch(error) {
         console.error("Error en deleteOrder:", error);
-        res.status(500).json({ error: "Error al eliminar la orden" });
         next(error)
         }       // Cierra try/catch
 
-    } //Cierre deleteOrder
+    } // Cierre deleteOrder
 
 } // Cierra clase
 

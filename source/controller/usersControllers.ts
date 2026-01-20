@@ -1,6 +1,6 @@
 // Importamos los módulos necesarios
 import { readUsers, saveUsers} from "../model/usersModel";
-import { Request, Response} from 'express';
+import { NextFunction, Request, Response} from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import bcrypt from "bcrypt";
@@ -24,7 +24,8 @@ export class userController {
     // Utilizamos static para no tener que crear una instancia en el Controller
     
     // Función para que se registre un usuario
-    static async register(req: Request, res: Response) :  Promise<void> {
+    static async register(req: Request, res: Response, next: NextFunction) :  Promise<void> {
+        try {
         const result = userRegister.safeParse(req.body);
     
     if (!result.success) { 
@@ -47,10 +48,15 @@ export class userController {
     saveUsers(users)
     res.status(201).json({ message: "Usuario registrado correctamente" });
 
-    }   
+    }   catch(error) {
+        console.error("Error en register", error)
+        next(error);
+    }
+}
 
     // Función para que el usuario inicie sesión
-    static async login (req: Request, res: Response) : Promise<void> {
+    static async login (req: Request, res: Response, next: NextFunction) : Promise<void> {
+        try {
         const {email, password} = req.body;
         const dataBase = readUsers();
         const user = dataBase.find(u => u.email === email);
@@ -71,9 +77,15 @@ export class userController {
         const token = jwt.sign(payload, process.env.SECRET_KEY as string, {expiresIn: '1h'});
         res.json({  message: "Login exitoso",
                     token: token  });
+    } catch(error) {
+        console.error("Error en login: ", error);
+        next(error)
     }
 
-    static viewProfile (req: Request, res: Response) {
+}
+
+    static viewProfile (req: Request, res: Response, next: NextFunction) {
+        try {
         if (!req.user) {
         return res.status(401).json({ error: 'No estás autenticado.' });
         }
@@ -82,15 +94,20 @@ export class userController {
         const userProfile = readUsers();
         const findUser = userProfile.find(u => u.id === id.toString());
         if(!findUser) {
-            res.status(400).json({error: 'El usuario no se encuentra registrado.'});
+            res.status(403).json({error: 'El usuario no se encuentra registrado.'});
             return
         }
         const { password, ...userWithoutPassword } = findUser;
-        res.json({findUser})
+        res.json({findUser});
+
+    } catch(error) {
+        console.error("Error en viewProfile: ", error)
+        next(error);    
+    }
+
     }
 
 }
-
 
 
 
