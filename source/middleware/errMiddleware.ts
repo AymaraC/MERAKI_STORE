@@ -14,4 +14,3 @@ export function errorHandler(
     mensaje: "Ocurrió un error en el servidor",
   });
 }
-

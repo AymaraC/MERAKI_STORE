@@ -9,7 +9,7 @@
     "module": "commonjs",
     "esModuleInterop": true,         
     "target": "es6",   
-    "types": ["node", "express"],
+    //"types": ["node", "express"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -36,6 +36,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    //"typeRoots": ["./node_modules/@types", "./source/types"]
   },
-   "include": ["source"]
+   "include": ["source", "source/types"]
 }
