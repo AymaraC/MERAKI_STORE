@@ -17,7 +17,7 @@ const addOrderSchema = z.object({
 
 // Validación zod para que el admin pueda cambiar el estado de la orden
 const updateOrderStatusSchema = z.object({
-  estado: z.enum(["confirmado", "cancelado"], {
+  estado: z.enum(["confirmado", "cancelado"], {         // le damos con .enum una lista de valores posibles
     message: "El estado debe ser 'confirmado' o 'cancelado'",
   }),
 });
