@@ -6,7 +6,7 @@
     "imagenUrl": "https://via.placeholder.com/300",
     "tema": "Ruin",
     "artista": "Shawn Mendes",
-    "estado": "en_carrito",
+    "estado": "confirmado",
     "fecha": "",
     "precio": 15000
   },
@@ -17,7 +17,7 @@
     "imagenUrl": "https://via.placeholder.com/300",
     "tema": "Unconditionally",
     "artista": "Katy Perry",
-    "estado": "en_carrito",
+    "estado": "confirmado",
     "fecha": "22/01/2026",
     "precio": 15000
   },
@@ -28,7 +28,7 @@
     "imagenUrl": "https://example.com/artist.jpg",
     "tema": "Car Radio",
     "artista": "Twenty One Pilots",
-    "estado": "en_carrito",
+    "estado": "cancelado",
     "fecha": "18/08/2025",
     "precio": 15000
   }

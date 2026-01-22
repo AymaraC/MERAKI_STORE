@@ -15,6 +15,13 @@ const addOrderSchema = z.object({
   fecha: z.string().optional(),
 });
 
+// Validación zod para que el admin pueda cambiar el estado de la orden
+const updateOrderStatusSchema = z.object({
+  estado: z.enum(["confirmado", "cancelado"], {
+    message: "El estado debe ser 'confirmado' o 'cancelado'",
+  }),
+});
+
 export class ordersController {
     // Requiere autenticacion y requiere rol de admin
     static getOrders(req: Request, res: Response, next: NextFunction) {
@@ -106,10 +113,11 @@ export class ordersController {
         if(findOrder.estado !== 'en_carrito') return res.status(403).json({error: 
             'No se puede modificar una orden ya confirmada o cancelada.'});
 
-    /*  safeParse() devuelve un objeto con:
+        /*safeParse() devuelve un objeto con:
         success -> true/false
         data -> body validado (solo si success = true)
         error -> detalles (solo si success = false) */
+
         const parsedData = addOrderSchema.safeParse(req.body);          
 
         if (!parsedData.success) {
@@ -163,7 +171,44 @@ export class ordersController {
         next(error)
         }       // Cierra try/catch
 
-    } // Cierre deleteOrder
+} // Cierre deleteOrder
+
+    static updateOrderStatus(req: Request, res: Response, next: NextFunction) { // solo el admin pueda cambiar el estado del carrito 
+    try {
+    const orderId = req.params.id;
+    const orders = readDataBase();
+
+    const findOrder = orders.find(order => order.id === orderId);
+
+    if (!findOrder) {
+      return res.status(404).json({ error: "Orden no encontrada." });
+    }
+
+    if (findOrder.estado !== "en_carrito") {            // no permitimos cambiar si ya fue procesada
+      return res.status(403).json({
+        error: "Solo se pueden modificar órdenes en carrito.",
+      });
+    }
+
+    const parsed = updateOrderStatusSchema.safeParse(req.body);     // validamos con Zod lo que envía el cliente
+    if (!parsed.success) {          // por si falla la validación
+      return res.status(400).json({ errors: parsed.error.format() });
+    }
+
+    findOrder.estado = parsed.data.estado;      // .data es el body validado y limpio que devuelve safeParse cuando success === true.
+
+    save(orders);
+
+    res.status(200).json({
+      message: "Estado de la orden actualizado",
+      order: findOrder,
+    });
+
+  } catch (error) {
+    console.error("Error en updateOrderStatus:", error);
+    next(error);
+  }
+}
 
 } // Cierra clase
 

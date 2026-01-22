@@ -14,6 +14,7 @@ router.get('/orders', auth, isAdmin, ordersController.getOrders);   // Validamos
 router.get('/orders/cart', auth, ordersController.getOrderUser);    // Para que el usuario pueda ver su carrito con las ordenes.
 router.post('/orders', auth, ordersController.addOrders);           // Agregamos ordenes con el usuario ya logueado
 router.put('/orders/:id', auth, ordersController.editOrder);        // Editamos la orden completa
+router.patch('/orders/:id/status', auth, isAdmin, ordersController.updateOrderStatus);   // Admin cambia el estado de la orden
 router.delete('/orders/:id', auth, ordersController.deleteOrder);
 
 export default router;
