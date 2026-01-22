@@ -1,4 +1,4 @@
-import { readDataBase, save } from "../model/ordersModel";
+import { Order, readDataBase, save } from "../model/ordersModel";
 import { Request, Response, NextFunction } from "express";
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
@@ -33,12 +33,14 @@ export class ordersController {
         try {
         const id = req.user!.id;            // Utilizamos el ! para que TS confíe que el usuario ya existe el usuario
         const orders = readDataBase();
-        const findOrders = orders.find(order => order.userId === id);
-        if(!findOrders) return res.status(400).json({message: 'El usuario no tiene carrito'});
+        const userOrders = orders.filter(order => order.userId === id && order.estado === "en_carrito");
+    
+        if (userOrders.length === 0) {
+        return res.status(400).json({ message: "El usuario no tiene órdenes en carrito" });
+    }
 
-        if(findOrders.estado !== 'en_carrito') return res.status(403).json({error: 'No se pueden mostrar ordenes que no estén en el carrito.'})
-        
-        res.json({findOrders});             // Devolvemos las ordenes
+        res.json({ orders: userOrders }); // devolvemos las correspondientes al usuario
+
     } catch(error) {
         console.error("Error en getOrderUser:", error);
         next(error);
@@ -61,7 +63,7 @@ export class ordersController {
 
     const orders = readDataBase();
 
-    const newOrder = {
+    const newOrder: Order = {
       id: uuidv4(),
       userId: req.user!.id,
       tipoImagen,
@@ -70,7 +72,7 @@ export class ordersController {
       artista,
       estado: "en_carrito" as const,
       fecha: fecha ?? "",           // Al ser opcional la fecha, utilizamos el operador ?? por si el usuario envía null o undefined que use el string vacío
-      precio: 15000,              // Definimos el precio porque es el mismo para todos los cuadros
+      precio: 15000             // Definimos el precio porque es el mismo para todos los cuadros
     };
 
         orders.push(newOrder);

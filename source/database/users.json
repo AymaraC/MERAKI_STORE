@@ -16,5 +16,17 @@
     "email": "aurora@example.com",
     "password": "$2b$10$YLs8miFfmQ13CBmonL.61.et7zXvxN0iF0eVbuCr9wZvkCxacR7Jy",
     "role": "user"
+  },
+  {
+    "id": "5d0af926-805d-4978-9e56-447b179a8a2f",
+    "email": "admin@example.com",
+    "password": "$2b$10$zA/q38vVjOW2ucQeGBPEbOkIXx4Xi7eRO1ihC4C.2K.ffn6P0ZyR6",
+    "role": "admin"
+  },
+  {
+    "id": "97394e23-16a3-4bc7-a40b-5ad26c4b5767",
+    "email": "kelly@gmail.com",
+    "password": "$2b$10$1EqITiH92V.jzuw4KSUl0O0eZRjfrEIlkP9FqjiH2kHHKZ6JTSCWe",
+    "role": "user"
   }
 ]
