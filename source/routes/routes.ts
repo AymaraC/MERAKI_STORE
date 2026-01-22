@@ -7,7 +7,7 @@ const router : Router = Router();
 
 // rutas para los endpoints
 router.post('/users/register', userController.register);
-router.post('/users/login', userController.register);
+router.post('/users/login', userController.login);
 router.get('/user/profile', auth, userController.viewProfile);
 
 router.get('/orders', auth, isAdmin, ordersController.getOrders);   // Validamos que el usuario este autenticado y que solo admin pueda ver todas las ordenes

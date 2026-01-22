@@ -5,15 +5,15 @@ Con este archivo, TypeScript ahora reconoce que `req.user` puede existir y tiene
 Esto evita errores de TypeScript cuando hacemos cosas como: const userId = req.user.id
 - `user` es opcional (`?`) porque podría no existir si el middleware de autenticación no se ejecutó o el usuario no está logueado.
 Este archivo no ejecuta código, solo define tipos para TS.*/
-import { Request } from "express";
+
+import "express-serve-static-core";
 
 declare module "express-serve-static-core" {
   interface Request {
     user?: {
       id: string;
-      role?: string;
+      role: "user" | "admin";
     };
   }
 }
 
-export{};

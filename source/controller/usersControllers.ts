@@ -10,14 +10,18 @@ import jwt from 'jsonwebtoken';
 // Utilizamos zod para validar que los datos que entren estén correctos
 export const userRegister = z.object({
     email: z.string()
-    .email('Email inválido.')
+    .min(1, 'El email es obligatorio.')
+    .pipe(z.string()
+    .email('Email inválido.'))
     .transform((email) => email.toLowerCase()),
 
     password: z.string()
+    .min(1, 'La contraseña es obligatoria.')
+    .pipe(z.string()
     .min(8, 'La contraseña debe tener como mínimo 8 caracteres')
     .regex(/[0-9]/, "Debe tener al menos un número")
     .regex(/[^a-zA-Z0-9]/, "Debe tener al menos un carácter especial"),
-
+    )
 });
 
 export class userController {
@@ -34,6 +38,15 @@ export class userController {
     }    
         
     const { email, password } = result.data;
+
+    const users = readUsers();
+    const emailExists = users.some(u => u.email === email);
+
+    if (emailExists) { 
+        res.status(400).json({ error: "El email ya se encuentra registrado." });
+        return
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser : User = {
@@ -43,7 +56,6 @@ export class userController {
         role: 'user'
     }
 
-    const users = readUsers();
     users.push(newUser);
     saveUsers(users)
     res.status(201).json({ message: "Usuario registrado correctamente" });
@@ -98,7 +110,7 @@ export class userController {
             return
         }
         const { password, ...userWithoutPassword } = findUser;
-        res.json({findUser});
+        res.json({user: userWithoutPassword});
 
     } catch(error) {
         console.error("Error en viewProfile: ", error)

@@ -1,11 +1,17 @@
 // archivo principal que levanta el servidor
-import express, {Request, Response, NextFunction } from 'express';
+/// <reference path="./types/express.d.ts" />
+import 'dotenv/config';
+import express, {Request, Response } from 'express';
 import router from './routes/routes';
 import { globalMiddleware } from './middleware/globalMiddleware';
 import { errorHandler } from './middleware/errMiddleware';
 import cors from 'cors';
+import path from 'path';
+import dotenv from 'dotenv';
 
-const PORT = process.env.PORT;
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+const PORT = process.env.PORT 
+
 const app = express();
 
 app.use(globalMiddleware);          // se ejecuta con TODAS las request
