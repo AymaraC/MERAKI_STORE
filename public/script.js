@@ -1,7 +1,7 @@
 const API_BASE = "http://localhost:3000"; 
 const token = localStorage.getItem("token");
 
-// ---------------- LOGOUT ----------------
+// LOGOUT 
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
@@ -10,13 +10,15 @@ if (logoutBtn) {
   });
 }
 
-// ---------------- PERFIL ----------------
+// PERFIL 
 async function fetchProfile() {
   try {
     const res = await fetch(`${API_BASE}/user/profile`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
     const data = await res.json();
+
     if (res.ok) {
       document.getElementById("user-info").innerText =
         `¡Bienvenido ${data.user.email}! ✨`;
@@ -28,7 +30,7 @@ async function fetchProfile() {
   }
 }
 
-// ---------------- ÓRDENES ----------------
+// ORDENES
 const ordersContainer = document.getElementById("orders-container");
 async function fetchOrders() {
   try {
@@ -135,7 +137,7 @@ async function editOrder(id) {
   }
 }
 
-// ---------------- CREAR ORDEN ----------------
+// CREAR ORDEN 
 const orderForm = document.getElementById("order-form");
 if (orderForm) {
   orderForm.addEventListener("submit", async (e) => {
@@ -183,7 +185,7 @@ if (orderForm) {
     }
   });
 }
-// ---------------- LOGIN ----------------
+// LOGIN 
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
@@ -215,9 +217,10 @@ if (loginForm) {
   });
 }
 
-// ---------------- CHECK LOGIN ----------------
+// CHECK LOGIN
 function checkLogin() {
   const token = localStorage.getItem("token");
+
   // Solo redirigimos si estamos en index.html y no hay token
   if (!token && window.location.pathname !== "/login.html") {
     window.location.href = "/login.html";
@@ -226,7 +229,7 @@ function checkLogin() {
 
 checkLogin(); // Llamamos al cargar la página
 
-// ---------------- INICIAL ----------------
+// INICIAL 
 if (token) {
   fetchProfile();
   fetchOrders();

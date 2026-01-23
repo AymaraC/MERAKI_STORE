@@ -23,18 +23,22 @@
     <h3>Nueva orden</h3>
     <form id="order-form">
       <select id="tipoImagen" required>
-        <option value="">Tipo de imagen</option>
+        <option value="">Tipo de imagen *</option>
         <option value="foto_personal">Foto personal</option>
         <option value="foto_del_artista">Foto del artista</option>
       </select>
 
-      <input type="text" id="imageUrl" placeholder="Pega aquí la URL de la imagen" required />
-      <input type="text" id="tema" placeholder="Tema" required />
-      <input type="text" id="artista" placeholder="Artista" required />
+      <input type="text" id="imageUrl" placeholder="Pega aquí la URL de la imagen *" required />
+      <input type="text" id="tema" placeholder="Tema *" required />
+      <input type="text" id="artista" placeholder="Artista *" required />
       <input type="date" id="fecha" />
 
       <button type="submit">Agregar orden</button>
     </form>
+
+    <p class="nota-obligatorios">
+        Los campos son obligatorios.
+    </p>
 
     <p id="order-message" class="message"></p>
   </section>

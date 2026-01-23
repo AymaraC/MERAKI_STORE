@@ -118,7 +118,16 @@ header h2 {
   font-weight: normal;
   color: #666;
   margin-top: 2;      /* saca el espacio arriba de Mis Órdenes */
-
 }
 
+.nota-obligatorios {
+  font-size: 0.85rem;
+  color: #666;       /* gris suave */
+  margin-top: 8px;
+}
 
+.nota-obligatorios::before {
+  content: "* ";
+  color: red;
+  font-weight: bold;
+}
