@@ -17,6 +17,9 @@ const app = express();
 app.use(globalMiddleware);          // se ejecuta con TODAS las request
 app.use(express.json());            // parsea JSON
 app.use(cors());                       // para que pueda vincularse con otras páginas web.
+
+app.use(express.static(path.join(__dirname, "../public")));
+
 app.use(router);            // Utilizamos las rutas
 
 

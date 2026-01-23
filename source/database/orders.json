@@ -33,14 +33,14 @@
     "precio": 15000
   },
   {
-    "id": "fb25fa86-01b4-40ee-84cd-29d6e2b92af0",
+    "id": "346ad72b-2c7c-45c0-852c-b6da70834900",
     "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
     "tipoImagen": "foto_del_artista",
-    "imagenUrl": "https://example.com/artist.jpg",
-    "tema": "Ocean eyes",
-    "artista": "Billie Eilish",
+    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769192788/katy_kzfpme.jpg",
+    "tema": "Thinking of You",
+    "artista": "Katy Perry",
     "estado": "en_carrito",
-    "fecha": "",
+    "fecha": "2026-02-14",
     "precio": 15000
   }
 ]
