@@ -19,7 +19,7 @@ async function fetchProfile() {
     const data = await res.json();
     if (res.ok) {
       document.getElementById("user-info").innerText =
-        `Hola ${data.user.email} (${data.user.role})`;
+        `¡Bienvenido ${data.user.email}! ✨`;
     } else {
       console.error("Error perfil:", data);
     }
