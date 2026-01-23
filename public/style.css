@@ -73,11 +73,16 @@ button {
   margin-right: 5px;
 }
 
-.error {
+.message {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.message.error {
   color: red;
 }
 
-.message {
+.message.success {
   color: green;
 }
 

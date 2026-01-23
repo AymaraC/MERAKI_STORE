@@ -173,17 +173,24 @@ if (orderForm) {
       const msg = document.getElementById("order-message");
       if (!res.ok) {
         msg.innerText = JSON.stringify(data.errors || data.error);
+        msg.className = "message error";        // para que el mensaje se vea de color rojo cuando es un error
         return;
       }
 
       msg.innerText = "Orden creada con éxito";
+      msg.className = "message success";        // para que el mensaje se vea de color verde cuando es éxito.
       orderForm.reset();
       fetchOrders();
+
     } catch (err) {
-      document.getElementById("order-message").innerText = "Error al crear la orden";
+      document.getElementById("order-message")
+      msg.innerText = "Error al crear la orden";
+      msg.className = "message error";
       console.error(err);
     }
+
   });
+  
 }
 // LOGIN 
 const loginForm = document.getElementById("login-form");

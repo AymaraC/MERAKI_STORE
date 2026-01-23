@@ -42,5 +42,27 @@
     "estado": "en_carrito",
     "fecha": "2026-02-14",
     "precio": 15000
+  },
+  {
+    "id": "8beb7e35-a09e-4589-acf3-a083f841995d",
+    "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
+    "tipoImagen": "foto_del_artista",
+    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769200012/billie_mtpnt6.jpg",
+    "tema": "Ocean Eyes",
+    "artista": "Billie Eilish",
+    "estado": "en_carrito",
+    "fecha": "",
+    "precio": 15000
+  },
+  {
+    "id": "bb9e4fbb-99c6-496b-921d-b0d57ad6ba91",
+    "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
+    "tipoImagen": "foto_personal",
+    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769200970/20250219_180830_ejfujr.jpg",
+    "tema": "Conselho",
+    "artista": "Samba De Raiz",
+    "estado": "en_carrito",
+    "fecha": "",
+    "precio": 15000
   }
 ]
