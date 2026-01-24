@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --quiet --watch source --ext ts --exec \"ts-node source/server.ts\"",
     "build": "tsc",
+    "predeploy": "npm run build && cp -r source/database dist/database",
     "start": "node dist/server.js"
   },
   "keywords": [],

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "111ae0e5-7b86-48ee-9ed4-1c5547faf00e",
+    "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
+    "tipoImagen": "foto_personal",
+    "imagenUrl": "https://via.placeholder.com/300",
+    "tema": "Ruin",
+    "artista": "Shawn Mendes",
+    "estado": "confirmado",
+    "fecha": "",
+    "precio": 15000
+  },
+  {
+    "id": "a0632571-6f2a-4ee2-aa98-d700651fa9f9",
+    "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
+    "tipoImagen": "foto_del_artista",
+    "imagenUrl": "https://via.placeholder.com/300",
+    "tema": "Unconditionally",
+    "artista": "Katy Perry",
+    "estado": "confirmado",
+    "fecha": "22/01/2026",
+    "precio": 15000
+  },
+  {
+    "id": "28b01968-6a5a-42e1-8f51-c28eac694b0f",
+    "userId": "25a31b06-e23b-4aa7-a4f0-53dc64e24d53",
+    "tipoImagen": "foto_del_artista",
+    "imagenUrl": "https://example.com/artist.jpg",
+    "tema": "Car Radio",
+    "artista": "Twenty One Pilots",
+    "estado": "cancelado",
+    "fecha": "18/08/2025",
+    "precio": 15000
+  },
+  {
+    "id": "346ad72b-2c7c-45c0-852c-b6da70834900",
+    "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
+    "tipoImagen": "foto_del_artista",
+    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769192788/katy_kzfpme.jpg",
+    "tema": "Thinking of You",
+    "artista": "Katy Perry",
+    "estado": "confirmado",
+    "fecha": "2026-02-14",
+    "precio": 15000
+  },
+  {
+    "id": "8beb7e35-a09e-4589-acf3-a083f841995d",
+    "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
+    "tipoImagen": "foto_del_artista",
+    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769200012/billie_mtpnt6.jpg",
+    "tema": "Ocean Eyes",
+    "artista": "Billie Eilish",
+    "estado": "cancelado",
+    "fecha": "",
+    "precio": 15000
+  }
+]
