@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000"; 
+const API_BASE = '';      //lo dejamos vacío para que funcione tanto de forma local como en render
 const token = localStorage.getItem("token");
 
 // LOGOUT 
@@ -44,7 +44,8 @@ async function fetchOrders() {
       return;
     }
 
-    renderOrders(data.orders);
+    renderOrders(data.orders || []);
+
   } catch (err) {
     console.error("Error fetchOrders:", err);
     ordersContainer.innerHTML = `<p>Error al cargar las órdenes</p>`;
@@ -158,6 +159,7 @@ if (orderForm) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+
         body: JSON.stringify({
           tipoImagen,
           imagenUrl: imageUrl,
@@ -171,6 +173,7 @@ if (orderForm) {
       console.log("Respuesta backend:", data);
 
       const msg = document.getElementById("order-message");
+
       if (!res.ok) {
         msg.innerText = JSON.stringify(data.errors || data.error);
         msg.className = "message error";        // para que el mensaje se vea de color rojo cuando es un error
@@ -183,7 +186,7 @@ if (orderForm) {
       fetchOrders();
 
     } catch (err) {
-      document.getElementById("order-message")
+      const msg = document.getElementById("order-message")
       msg.innerText = "Error al crear la orden";
       msg.className = "message error";
       console.error(err);
@@ -191,6 +194,7 @@ if (orderForm) {
 
   });
   
+
 }
 // LOGIN 
 const loginForm = document.getElementById("login-form");
