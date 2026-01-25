@@ -1,4 +1,4 @@
-// archivo para crear un usuario 'admin'
+// archivo para crear un usuario 'admin' y poder loguearse para ver todas las ordenes
 import { readUsers, saveUsers, User } from '../model/usersModel';
 import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';        

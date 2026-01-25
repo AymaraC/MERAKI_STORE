@@ -39,19 +39,21 @@ export class userController {
         
     const { email, password } = result.data;
 
-    const users = readUsers();
-    const emailExists = users.some(u => u.email === email);
+    const normalizedEmail = email.toLowerCase().trim();      // normalizamos el mail a minusculas y eliminamos espacios innecesarios
 
-    if (emailExists) { 
+    const users = readUsers();
+    const emailExists = users.some(u => u.email === normalizedEmail);
+
+    if (emailExists) {                                      // Nos fijamos que el mail no se encuentre ya registrado                                        
         res.status(400).json({ error: "El email ya se encuentra registrado." });
-        return
+        return;
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser : User = {
         id: uuidv4(),
-        email: email,
+        email: normalizedEmail,
         password: hashedPassword,
         role: 'user'
     }
@@ -69,9 +71,11 @@ export class userController {
     // Función para que el usuario inicie sesión
     static async login (req: Request, res: Response, next: NextFunction) : Promise<void> {
         try {
-        const {email, password} = req.body;
+        const emailNormalized = req.body.email.toLowerCase().trim();
+        const { password} = req.body;
+        
         const dataBase = readUsers();
-        const user = dataBase.find(u => u.email === email);
+        const user = dataBase.find(u => u.email === emailNormalized);
 
         if(!user) {
             res.status(401).json({error: 'El usuario no existe'});
@@ -89,6 +93,7 @@ export class userController {
         const token = jwt.sign(payload, process.env.SECRET_KEY as string, {expiresIn: '1h'});
         res.json({  message: "Login exitoso",
                     token: token  });
+
     } catch(error) {
         console.error("Error en login: ", error);
         next(error)
