@@ -44,13 +44,13 @@
     "precio": 15000
   },
   {
-    "id": "8beb7e35-a09e-4589-acf3-a083f841995d",
+    "id": "89d7a023-bb03-41cd-887b-f1ce9fc36917",
     "userId": "054ba341-ce3a-41d3-bd47-bb26ea92822d",
     "tipoImagen": "foto_del_artista",
-    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769200012/billie_mtpnt6.jpg",
-    "tema": "Ocean Eyes",
+    "imagenUrl": "https://res.cloudinary.com/dlgcjmsdy/image/upload/v1769439414/billie_nidtah.png",
+    "tema": "listen before you go",
     "artista": "Billie Eilish",
-    "estado": "cancelado",
+    "estado": "en_carrito",
     "fecha": "",
     "precio": 15000
   }
