@@ -22,5 +22,11 @@
     "email": "hannah@example.com",
     "password": "$2b$10$ppqX2IchkIo45c0Mg2yiIuS70Q7bcyR5DYDKrVvvvpX4feKAvF1JW",
     "role": "user"
+  },
+  {
+    "id": "98808e06-ed99-48d1-b6fc-f5600dc9b34b",
+    "email": "zara@gmail.com",
+    "password": "$2b$10$ANjkPMcovFUHLnoT0rpo2OsvOr/6WckJl9XjRCinKaKFcwdMY6qzS",
+    "role": "user"
   }
 ]

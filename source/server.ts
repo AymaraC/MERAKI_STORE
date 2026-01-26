@@ -1,5 +1,6 @@
 // archivo principal que levanta el servidor
-/// <reference path="./types/express.d.ts" />
+//Esta línea es necesaria para que TypeScript sepa que req.user existe y evitar errores de tipos al compilar.
+/// <reference path="./types/express.d.ts" />   
 import 'dotenv/config';
 import express, {Request, Response } from 'express';
 import router from './routes/routes';
