@@ -231,14 +231,14 @@ Para facilitar las pruebas en producción (deploy en Render), se incluyen usuari
 
 ### Usuario común
 
-- **Email:** demo@meraki.com  
-- **Contraseña:** 123456  
+- **Email:** aurora@example.com  
+- **Contraseña:** aurora.2026  
 - **Rol:** user  
 
 ### Usuario administrador
 
-- **Email:** admin@meraki.com  
-- **Contraseña:** admin123  
+- **Email:** admin@example.com 
+- **Contraseña:** SuperSecreto123!
 - **Rol:** admin  
 
 
