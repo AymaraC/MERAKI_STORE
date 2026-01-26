@@ -30,7 +30,7 @@ La API implementa **autenticación con JWT**, **roles (user / admin)** y **persi
 - Visualizar todas las órdenes cargadas en la base de datos  
 - Cambiar el estado de una orden a *confirmado* o *cancelado*  
 
-### Tecnologías utilizadas que tendrán que descargar
+### Tecnologías utilizadas que tendrán que descargar:
 
 - Node.js  
 - Express  
