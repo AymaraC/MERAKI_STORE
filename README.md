@@ -8,6 +8,7 @@
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Endpoints y funcionalidades](#endpoints-y-funcionalidades)
 - [Ejecutar el proyecto](#ejecutar-el-proyecto)
+- [Usuarios de prueba (Render)](#usuarios-de-prueba-render)
 - [Flujo de uso típico](#flujo-de-uso-típico)
 - [Notas finales](#notas-finales)
 
@@ -219,6 +220,27 @@ Elimina una orden existente.
 El servidor se levantará en:
 
 http://localhost:3000
+
+## Usuarios de prueba (Render)
+
+Para facilitar las pruebas en producción (deploy en Render), se incluyen usuarios ya creados en los archivos JSON.
+
+> ⚠️ Nota  
+> Render utiliza un filesystem efímero, por lo que los usuarios y órdenes creados en producción no persisten entre reinicios del contenedor.  
+> Por este motivo, estos usuarios vuelven a existir cada vez que Render reinicia el servicio.
+
+### Usuario común
+
+- **Email:** demo@meraki.com  
+- **Contraseña:** 123456  
+- **Rol:** user  
+
+### Usuario administrador
+
+- **Email:** admin@meraki.com  
+- **Contraseña:** admin123  
+- **Rol:** admin  
+
 
 ## Ejemplos de uso
 
