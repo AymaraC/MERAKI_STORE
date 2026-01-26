@@ -30,7 +30,7 @@ La API implementa **autenticación con JWT**, **roles (user / admin)** y **persi
 - Visualizar todas las órdenes cargadas en la base de datos  
 - Cambiar el estado de una orden a *confirmado* o *cancelado*  
 
-### Tecnologías utilizadas que tendrán que descargar:
+### Tecnologías utilizadas 
 
 - Node.js  
 - Express  
@@ -51,7 +51,7 @@ Además, se requiere crear un archivo `.env` en la raíz del proyecto con la sig
 
 ### Dependencias principales
 
-El proyecto utiliza las siguientes bibliotecas:
+El proyecto utiliza las siguientes bibliotecas que tendran que descargar:
 
 - express  
 - uuid  
